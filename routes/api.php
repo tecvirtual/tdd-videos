@@ -20,3 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/videos/{id}', [VideoController::class, 'getById']);
+Route::get('/videos', [VideoController::class, 'index']);
