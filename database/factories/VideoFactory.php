@@ -22,8 +22,8 @@ class VideoFactory extends Factory
     public function definition()
     {
         return [
-            'title' => 'My tittle',
-            'description' => 'My description',
+            'title' => $this->faker->title(),
+            'description' => $this->faker->paragraph(),
             'url_video' => 'https://www.youtube.com/watch?v=zTEYUFgLveY'
         ];
     }

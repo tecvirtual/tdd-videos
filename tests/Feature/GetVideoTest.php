@@ -20,26 +20,12 @@ class GetVideoTest extends TestCase
     public function test_get_video_by_id()
     {
         //Create scenario
-
-        /*factory(Video::class)->create([
-            'id' => 1,
-            'title' => 'My tittle',
-            'description' => 'My description',
-            'url_video' => 'https://www.youtube.com/watch?v=zTEYUFgLveY'
-        ]);*/
-
-        Video::factory()->create();
+        $video = Video::factory()->create();
 
         //Call an api to request a video
-        $response = $this->get('api/videos/1');
+        $response = $this->get(sprintf('api/videos/%s', $video->id));
 
         //Check that you return a video to us
-
-        $response->assertJsonFragment([
-            'id' => 1,
-            'title' => 'My tittle',
-            'description' => 'My description',
-            'url_video' => 'https://www.youtube.com/watch?v=zTEYUFgLveY'
-        ]);
+        $response->assertJsonFragment($video->toArray());
     }
 }
